@@ -1,13 +1,19 @@
 package Learning;
 
 import static org.testng.AssertJUnit.assertEquals;
+
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,9 +23,9 @@ import graphql.Assert;
 
 public class LoginPage {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-/*Learmning scope-
+/*Learning scope-
  Done-
  launch browser,
  actions class, 
@@ -39,7 +45,8 @@ public class LoginPage {
  findelements,
  explicit wait, inprogress*
  handle ajax calls, inprogress*
- capturescreenshot, pending*
+ capturescreenshot, 
+  excel sheet reading, inprogress
  
  
  Pending->>>>
@@ -54,7 +61,6 @@ public class LoginPage {
  use testng annotations,p
  testng assert,p
  tab window and window handles- pending,
- excel sheet reading -p ,
  parallel testing-p ,
  batch testing-p,
  cross browser testing-p,
@@ -220,6 +226,21 @@ public class LoginPage {
     {
       System.out.println("Radio button text:" + elements.get(i).getAttribute("value"));
     }
+    
+   
+    /*description:- taken driver object and we type casted into takescreen object and function called getscreenshotas present in takescreenshot 
+     and it will take screenshot and save into format file .
+    And file stored as src so src is dummy location present and we don't know src location and can't access .so to copy screenshot to desired location
+    we have to import jar file into our project https://commons.apache.org/proper/commons-io/download_io.cgi and build path into project using add external jar file.
+    */
+    
+    //taken screenshot 
+	File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	
+	//copied screenshot from sourcefile to our destination location
+	FileUtils.copyFile(src, new File("C:\\Users\\Vikash\\eclipse-workspace\\screenshot.png"));
+	
+    
     
 	//quit browser- close all window and close is for current window
 	//driver.quit();

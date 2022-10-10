@@ -41,7 +41,8 @@ public class LoginPage {
  handle ajax calls, inprogress*
  capturescreenshot, pending*
  
- Pending-
+ 
+ Pending->>>>
  scroll to element, ***
  fluent wait, ***
  css selector, ***
